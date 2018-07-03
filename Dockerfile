@@ -5,12 +5,12 @@ ENV VER_NGINX_DEVEL_KIT=0.3.0 \
     VER_LUA_NGINX_MODULE=0.10.13 \
     VER_NGINX=1.15.0 \
     VER_LUAJIT=2.0.5 \
-    NGINX_DEVEL_KIT ngx_devel_kit-${VER_NGINX_DEVEL_KIT} \
-    LUA_NGINX_MODULE lua-nginx-module-${VER_LUA_NGINX_MODULE} \
+    NGINX_DEVEL_KIT=ngx_devel_kit-${VER_NGINX_DEVEL_KIT} \
+    LUA_NGINX_MODULE=lua-nginx-module-${VER_LUA_NGINX_MODULE} \
     NGINX_ROOT=/nginx \
-    WEB_DIR ${NGINX_ROOT}/html \
-    LUAJIT_LIB /usr/local/lib \
-    LUAJIT_INC /usr/local/include/luajit-2.0
+    WEB_DIR=${NGINX_ROOT}/html \
+    LUAJIT_LIB=/usr/local/lib \
+    LUAJIT_INC=/usr/local/include/luajit-2.0
 
 # ***** ALL DEPENDENCIES *****
 # Common dependencies (Nginx and LUAJit)
