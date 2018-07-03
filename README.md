@@ -1,2 +1,58 @@
-# nginx-lua
-NGINX with LUA dockerized
+nginx-lua
+=========
+
+Dockerised Nginx, with Lua module, built from source
+
+The docker image is based on the manual compilation instructions at ...
+
+[http://wiki.nginx.org/HttpLuaModule#Installation](http://wiki.nginx.org/HttpLuaModule#Installation)
+
+Useful for those who want Nginx with Lua but don't want to use OpenResty
+
+Usage
+-----
+
+1. Create your own **Dockerfile** ...
+
+    ```
+    FROM nood/nginx-lua
+    COPY /your/nginx.conf /nginx/conf/nginx.conf
+    COPY /your/index.html /nginx/html/index.html
+    ```
+
+2. Add this location block to your **nginx.conf** file
+
+    ```
+    location /helloops {
+        content_by_lua '
+            ngx.header["Content-Type"] = "text/plain";
+            ngx.say("hello OPS");
+        ';
+    }
+    ```
+
+    If you don't have an **nginx.conf** file then use [the conf file](https://raw.githubusercontent.com/danday74/docker-nginx-lua/master/nginx.conf) provided in the github repo
+
+    The conf file provided is the default generated conf file with the above location block added
+
+3. Build your docker image
+
+4. Run your docker container - Remember to use **-p YOUR_PORT:80** in your docker run statement
+
+5. Visit http://localhost:YOUR_PORT/helloops
+
+Automated
+---------
+
+The master branch on the github repo is watched by an automated docker build
+
+Which builds docker image **nood/nginx-lua** on push to master
+
+On success, the docker build triggers the docker repo's webhooks (if any)
+
+License
+-------
+
+[http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+APACHE LICENSE-2.0 ... In other words, please use freely and do whatever you want with it!

@@ -58,7 +58,7 @@ RUN ln -s ${NGINX_ROOT}/sbin/nginx /usr/local/sbin/nginx
 # ***** MISC *****
 WORKDIR ${WEB_DIR}
 EXPOSE 80
-#EXPOSE 443
+EXPOSE 443
 
 # ***** CLEANUP *****
 RUN rm -rf /nginx-${VER_NGINX}
